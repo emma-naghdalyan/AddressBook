@@ -10,6 +10,8 @@ using AddressBook.BLL.Interfaces;
 using AutoMapper;
 using AddressBook.DAL.Entities;
 
+// Database added using Code first method.
+
 namespace AddressBook.Controllers
 {
     public class ContactController : Controller
