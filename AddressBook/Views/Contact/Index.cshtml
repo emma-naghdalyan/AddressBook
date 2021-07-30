@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ContactViewModel>
+
+<body style="        background-color: rgb(222, 226, 227);">
+    <h3 style="font-style:italic; text-align:center;">Contacts</h3>
+    <table class="table table-dark table-condensed table-bordered" style="margin:auto;">
+        <thead>
+            <tr scope="row">
+                <th>Full Name </th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>ZIP</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+            <tr scope="row">
+                <td>@contact.FullName</td>
+                <td>@contact.Email</td>
+                <td>@contact.PhoneNumber</td>
+                <td>@contact.Address.Country</td>
+                <td>@contact.Address.City </td>
+                <td>@contact.Address.Street</td>
+                <td>@contact.Address.ZIP</td>
+                <td>
+                    <a asp-route-id="@contact.Id" asp-action="Details" class="btn btn-primary">Details</a>
+                    <a asp-route-id="@contact.Id" asp-action="Edit" class="btn btn-primary">Edit</a>
+                    <form style="display:inline;" method="post" asp-action="Delete">
+                        <input asp-route-id="@contact.Id" asp-action="Delete" class="btn btn-danger" type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table> <br /> <br />
+    <a style="float:right; display:block; margin-right:300px; padding:10px;" asp-action="Create" class="btn btn-dark">Create</a>
+</body>
